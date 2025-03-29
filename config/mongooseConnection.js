@@ -1,12 +1,14 @@
 const  mongoose = require("mongoose");
+const config = require("config");
+const dbgr = require("debug")("Development:mongoose");
 
 mongoose
-.connect("mongodb://127.0.0.1:27017/bladion")   
+.connect(`${config.get('MONGODB_URL')}/Bladion`)   
 .then(() => {
-    console.log("Database Connected");
+    dbgr("Database Connected");
 })
 .catch((err) => {
-    console.log("Database Error", err);
+    dbgr("Database Error", err);
 })
 
-modeule.exports = mongoose.connection;
+module.exports = mongoose.connection;
