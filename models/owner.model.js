@@ -13,6 +13,10 @@ const ownerSchema = mongoose.Schema({
         type: Array,
         default: []
     },
+    role: {
+        type: String,
+        default: "owner"
+    },
     products: {
         type: Array,
         default: []

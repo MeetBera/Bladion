@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleProfile() {
+            document.getElementById('profilePanel').classList.toggle('translate-x-full');
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+    <header class="w-full flex fixed justify-between items-center p-4 bg-white shadow-md">
+        <h1 class="text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text">Bladion</h1>
+        <div class="flex items-center space-x-4">
+            <button class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full" onclick="toggleProfile()"><i class="ri-user-line"></i></button>
+            <button class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full" onclick="window.location.href='/cart'"><i class="ri-shopping-cart-fill"></i></button>
+        </div>
+    </header>
+    
+    <main class="flex w-full max-w-6xl mx-auto mt-20">
+        <!-- Sidebar Filter -->
+        <aside class="w-1/4 p-4 bg-white shadow-md rounded-lg fixed left-0 top-18 h-full overflow-y-auto">
+            <h2 class="text-xl font-semibold mb-4">Filters</h2>
+            <form action="/shop" method="GET">
+                <label class="block mb-2">
+                    <input type="checkbox" name="discount" value="1" class="mr-2"> Discount
+                </label>
+                <button type="submit" class="w-full mt-4 p-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded">Apply Filters</button>
+            </form>
+        </aside>
+        
+        <!-- Product Grid -->
+        <section class="w-3/4 ml-auto grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+            <% products.forEach(product => { %>
+                <div class="p-4 border-4 border-solid border-grey-600 bg-white rounded-lg shadow-md">
+                    <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" class="w-full h-40 object-contain rounded-md mb-4">
+                    <h2 class="text-xl font-bold"><%= product.name %></h2>
+                    <p class="text-gray-600"><%= product.description %></p>
+                    <p class="text-gray-800 font-semibold">&#8377;<%= product.price %></p>
+                    <p class="text-green-500 font-semibold"><%= product.discount %>% off</p>
+
+                    <form action="/cart/add" method="POST" class="add-to-cart-form">
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <input type="hidden" name="name" value="<%= product.name %>">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="mt-4 p-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-md buy-now-btn">
+                            Buy Now
+                        </button>
+                    </form>
+                </div>
+            <% }); %>
+        </section>
+        
+        <!-- Profile Panel -->
+        <div id="profilePanel" class="fixed  top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 p-4">
+            <button class="absolute top-4 right-4" onclick="toggleProfile()">✖</button>
+            <div class="flex flex-col items-center mt-10">
+                <img src="https://via.placeholder.com/100" alt="User Profile" class="w-20 h-20 rounded-full">
+                <h3 class="mt-4 text-xl font-bold"><%= user.fullname %></h3>
+                <p class="text-gray-600"><%= user.email %></p>
+                <button class="mt-6 p-2 bg-red-500 text-white rounded" onclick="window.location.href='/logout'">Logout</button>
+            </div>
+        </div>
+    </main>
+    <!-- <script>
+        // Add event listeners to all "Buy Now" buttons
+        document.querySelectorAll('.add-to-cart-form').forEach(form => {
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent the default form submission
+    
+                const button = form.querySelector('.buy-now-btn');
+                const formData = new FormData(form);
+    
+                try {
+                    // Send the form data to the server using fetch
+                    const response = await fetch('/cart/add', {
+                        method: 'POST',
+                        body: formData,
+                    });
+    
+                    if (response.ok) {
+                        // Change the button text to "Added"
+                        button.textContent = 'Added';
+                        button.disabled = true; // Disable the button to prevent multiple clicks
+                        button.classList.remove('bg-gradient-to-r', 'from-orange-500', 'to-red-500');
+                        button.classList.add('bg-green-500');
+                    } else {
+                        // Handle server errors
+                        const errorData = await response.json();
+                        alert(errorData.message || 'Failed to add product to cart.');
+                    }
+                } catch (error) {
+                    // Handle network or other errors
+                    console.error('Error adding product to cart:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    </script> -->
+</body>
+</html>

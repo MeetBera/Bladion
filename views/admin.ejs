@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body  class="bg-gray-100 p-6">
+    <header class="flex justify-between items-center p-4 bg-white shadow-md">
+        <h1 class="text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text">Admin Dashboard</h1>
+        <button class="mt-6 p-2 bg-green-500 text-white rounded" onclick="window.location.href='/createProduct'">Create Product</button>
+        <button class="p-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded" onclick="window.location.href='/shop'">Go to Shop</button>
+    </header>
+    
+    <main class="mt-6">
+        <div class="grid grid-cols-2 gap-6 mb-6">
+            <div class="p-4 bg-white rounded shadow-md">
+                <h2 class="text-lg font-semibold">Total Sales</h2>
+                <p class="text-2xl font-bold">$<span id="totalSales">0</span></p>
+            </div>
+            <div class="p-4 bg-white rounded shadow-md">
+                <h2 class="text-lg font-semibold">Total Profit</h2>
+                <p class="text-2xl font-bold">$<span id="totalProfit">0</span></p>
+            </div>
+        </div>
+        
+        <div class="bg-white p-4 rounded shadow-md">
+            <h2 class="text-lg font-semibold mb-4">All Products</h2>
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border p-2">Name</th>
+                        <th class="border p-2">Description</th>
+                        <th class="border p-2">Price</th>
+                        <th class="border p-2">Discount</th>
+                        <th class="border p-2">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td class="border p-2"><%= product.name %></td>
+                            <td class="border p-2"><%= product.description %></td>
+                            <td class="border p-2">$<%= product.price %></td>
+                            <td class="border p-2"><%= product.discount %>%</td>
+                            <td class="border p-2">
+                                <% if (product.image) { %>
+                                    <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" class="w-16 h-16 object-cover">
+                                <% } else { %>
+                                    No Image
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        // Example data
+        const products = [
+            { name: "Product 1", price: 50, sales: 10, profit: 500 },
+            { name: "Product 2", price: 30, sales: 5, profit: 150 },
+            { name: "Product 3", price: 20, sales: 8, profit: 160 }
+        ];
+        
+        let totalSales = 0;
+        let totalProfit = 0;
+        
+        const productList = document.getElementById("productList");
+        products.forEach(product => {
+            totalSales += product.sales * product.price;
+            totalProfit += product.profit;
+            
+            const row = `<tr class="border">
+                <td class="border p-2">${product.name}</td>
+                <td class="border p-2">$${product.price}</td>
+                <td class="border p-2">${product.sales}</td>
+                <td class="border p-2">$${product.profit}</td>
+            </tr>`;
+            productList.innerHTML += row;
+        });
+        
+        document.getElementById("totalSales").innerText = totalSales;
+        document.getElementById("totalProfit").innerText = totalProfit;
+    </script>
+</body>
+</html>

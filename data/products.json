@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1743672149810,
+    "name": "Knives",
+    "description": "For short range",
+    "price": 50,
+    "discount": 0,
+    "image": "1743672149793-Weapon_knives.webp"
+  },
+  {
+    "id": 1743672240659,
+    "name": "Steel Battons",
+    "description": "True Steel Strength",
+    "price": 200,
+    "discount": 10,
+    "image": "1743672240640-Weapon_steel_batons.webp"
+  },
+  {
+    "id": 1743674661488,
+    "name": "Daggers",
+    "description": "for short range ",
+    "price": 170,
+    "discount": 15,
+    "image": "1743674661472-Weapon_daggers.webp"
+  },
+  {
+    "id": 1743753105718,
+    "name": "Steel Nunchaku",
+    "description": "feel the Steel",
+    "price": 350,
+    "discount": 0,
+    "image": "1743753105696-Weapon_steel_nunchaku.webp"
+  },
+  {
+    "id": 1743753155094,
+    "name": "Blood Reaper",
+    "description": "Long For Blood ",
+    "price": 2500,
+    "discount": 20,
+    "image": "1743753155072-Weapon_super_kusarigama.webp"
+  },
+  {
+    "id": 1743753197090,
+    "name": "Keris",
+    "description": "For Twisted Hearts",
+    "price": 280,
+    "discount": 10,
+    "image": "1743753197070-Weapon_keris.webp"
+  },
+  {
+    "id": 1743753258705,
+    "name": "Disector Of Hopes",
+    "description": "Disector Of Hopes Literally",
+    "price": 2900,
+    "discount": 15,
+    "image": "1743753258684-Weapon_hw16_scythe.webp"
+  },
+  {
+    "id": 1743753308821,
+    "name": "Coral Knuckles",
+    "description": "From Deep Beneath",
+    "price": 850,
+    "discount": 0,
+    "image": "1743753308797-Weapon_super_knuckles.webp"
+  },
+  {
+    "id": 1743753363464,
+    "name": "Shuang Gou",
+    "description": "From The Royal China",
+    "price": 2200,
+    "discount": 0,
+    "image": "1743753363441-Weapon_ceremonial_shuang_gou.webp"
+  },
+  {
+    "id": 1743753423757,
+    "name": "Super Hammers",
+    "description": "Super Strength",
+    "price": 570,
+    "discount": 10,
+    "image": "1743753423733-Weapon_super_hammers.webp"
+  }
+]

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body  class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <h1 class="text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text mb-6">Welcome to Bladion</h1>
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+        <form action="/register" method="POST" class="space-y-4">
+            <input type="text" name="fullname" placeholder="Full Name" class="w-full p-2 border border-gray-300 rounded" required>
+            <input type="email" name="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required>
+            <input type="password" name="password" placeholder="Password" class="w-full p-2 border border-gray-300 rounded" required>
+            <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded">Register</button>
+        </form>
+        <p class="text-center mt-4">Already have an account? <a href="/login" class="text-blue-500">Login</a></p>
+    </div>
+</body>
+</html>

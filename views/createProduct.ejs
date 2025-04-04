@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text mb-6">Create New Product</h1>
+        <form action="/products/create" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-semibold">Product Name:</label>
+                <input type="text" name="name" required class="w-full p-2 border border-gray-300 rounded mt-1">
+            </div>
+        
+            <div>
+                <label class="block text-gray-700 font-semibold">Description:</label>
+                <textarea name="description" required class="w-full p-2 border border-gray-300 rounded mt-1"></textarea>
+            </div>
+        
+            <div>
+                <label class="block text-gray-700 font-semibold">Price:</label>
+                <input type="number" name="price" required class="w-full p-2 border border-gray-300 rounded mt-1">
+            </div>
+        
+            <div>
+                <label class="block text-gray-700 font-semibold">Discount Percentage:</label>
+                <input type="number" name="discount" min="0" max="100" class="w-full p-2 border border-gray-300 rounded mt-1">
+            </div>
+        
+            <div>
+                <label class="block text-gray-700 font-semibold">Product Image:</label>
+                <input type="file" name="image" accept="image/*" class="w-full p-2 border border-gray-300 rounded mt-1">
+            </div>
+        
+            <button type="submit" class="w-full p-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded">Create Product</button>
+        </form>
+    </div>
+</body>
+</html>
