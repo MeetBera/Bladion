@@ -1,0 +1,1 @@
+I built a shopping web application using EJS for the frontend and Node.js for the backend. The app features user authentication, routing, and cart management, all presented with a clean and user-friendly interface.
